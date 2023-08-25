@@ -98,6 +98,7 @@ class RabbitService {
                         const isDone = this.#channel.publish(rabbit_exchange, rabbit_reqkey, Buffer.from(JSON.stringify(result)));
 
                         if (isDone) {
+                            this.#logger && this.#logger.info("job done: " + JSON.stringify(result));
                             this.#channel.ack(msg)
                         }
                     });
