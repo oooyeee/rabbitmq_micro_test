@@ -25,6 +25,15 @@ or
 > or  
 * open swagger on [__*localhost:9091/swagger*__](localhost:9091/swagger) and click on buttons
 
+## rabbitmq management ui
+* open [localhost:9090](localhost:9090)  
+    - admin user: __rabbit__  
+    - password: __password__  
 
+> __*logall_queue*__ collects all messages  
+> __*requests_queue*__ collects request messages from microservice M1  
+> __*tasks_queue*__ collects task messages from microservice M1  
+> user __requester__ can read from __*tasks_queue*__  
+> user __tasker__ can read from __*requests_queue*__  
+> both users write to __messaging_echange__
 
- 
