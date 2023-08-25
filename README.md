@@ -26,7 +26,7 @@ or
 * open swagger on [__*localhost:9091/swagger*__](http://localhost:9091/swagger) and click on buttons
 
 ## rabbitmq management ui
-* open [localhost:9090](localhost:9090)  
+* open [localhost:9090](http://localhost:9090)  
     - admin user: __rabbit__  
     - password: __password__  
 
