@@ -21,9 +21,9 @@ or
 ```
 
 # to test requests run
-* app on [__*localhost:8080*__](localhost:8080) and click on buttons
+* app on [__*localhost:8080*__](http://localhost:8080) and click on buttons
 > or  
-* open swagger on [__*localhost:9091/swagger*__](localhost:9091/swagger) and click on buttons
+* open swagger on [__*localhost:9091/swagger*__](http://localhost:9091/swagger) and click on buttons
 
 ## rabbitmq management ui
 * open [localhost:9090](localhost:9090)  
