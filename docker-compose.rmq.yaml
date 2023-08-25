@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+    rabbit:
+        build:
+            dockerfile: ./rabbit/Dockerfile
+        ports:
+            - 9090:15672
+            - 5672:5672
+        environment:
+            RABBITMQ_DEFAULT_USER: "rabbit"
+            RABBITMQ_DEFAULT_PASS: "password"
+            RABBITMQ_CONFIG_FILE: "/opt/rabbitmq/etc/rabbitmq/rabbitmq.conf"
+        volumes:
+            - ./rabbit/definitions.json:/opt/rabbitmq/etc/rabbitmq/definitions.json
+            - ./rabbit/rabbitmq.conf:/opt/rabbitmq/etc/rabbitmq/rabbitmq.conf
+            - ./rabbit/data/:/var/lib/rabbitmq/
+            - ./rabbit/logs/:/var/log/rabbitmq/
+
+networks:
+    default:
+        driver: bridge

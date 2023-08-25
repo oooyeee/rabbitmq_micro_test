@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "client",
+			"path": "client"
+		},
+		{
+			"name": "micro1",
+			"path": "micro1"
+		},
+		{
+			"name": "micro2",
+			"path": "micro2"
+		},
+		{
+			"name": "rabbit",
+			"path": "rabbit"
+		},
+		{
+			"name": "root",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

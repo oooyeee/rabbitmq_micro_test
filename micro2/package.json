@@ -1,0 +1,29 @@
+{
+  "name": "micro2",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.1",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.5.1",
+    "pino-pretty": "^10.2.0",
+    "tsc-watch": "^6.0.4"
+  },
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node ./dist/index.js",
+    "clean": "rm ./tsconfig.tsbuildinfo; rm -r ./dist",
+    "dev": "tsc-watch -p ./tsconfig.json --onSuccess \"node --experimental-specifier-resolution=node ./dist/index.js\"",
+    "watch": "tsc --watch --incremental",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "amqplib": "^0.10.3",
+    "pino": "^8.15.0",
+    "zod": "^3.22.2",
+    "zod-to-json-schema": "^3.21.4"
+  }
+}

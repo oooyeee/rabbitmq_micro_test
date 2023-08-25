@@ -1,0 +1,146 @@
+{
+    "rabbit_version": "3.12.2",
+    "rabbitmq_version": "3.12.2",
+    "product_name": "RabbitMQ",
+    "product_version": "3.12.2",
+    "users": [
+        {
+            "name": "requester",
+            "password_hash": "4SsHGMToR4JybDX9ZyJhUkBfwobllekdikNQJ90Eob/vTvJq",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": [],
+            "limits": {}
+        },
+        {
+            "name": "tasker",
+            "password_hash": "BcCZ2//uMFdSzdCxyo+mAzjjmjxHcps6Jl8RJR+XvpZ9ceOm",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": [],
+            "limits": {}
+        },
+        {
+            "name": "rabbit",
+            "password_hash": "RGU8gEfabL11MZG+7LPBuXfjjA8gme/zfb4jB81XeNl++V3H",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": [
+                "administrator"
+            ],
+            "limits": {}
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/myvhost"
+        },
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "rabbit",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "tasker",
+            "vhost": "/myvhost",
+            "configure": ".*",
+            "write": "^(messaging_exchange)$",
+            "read": "requests_queue"
+        },
+        {
+            "user": "rabbit",
+            "vhost": "/myvhost",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "requester",
+            "vhost": "/myvhost",
+            "configure": ".*",
+            "write": "^(messaging_exchange)$",
+            "read": "tasks_queue"
+        }
+    ],
+    "topic_permissions": [],
+    "parameters": [],
+    "global_parameters": [
+        {
+            "name": "internal_cluster_id",
+            "value": "rabbitmq-cluster-id-EO_XkSfrXcoTczKybZW-3w"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "name": "tasks_queue",
+            "vhost": "/myvhost",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        },
+        {
+            "name": "logall_queue",
+            "vhost": "/myvhost",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        },
+        {
+            "name": "requests_queue",
+            "vhost": "/myvhost",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {}
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "messaging_exchange",
+            "vhost": "/myvhost",
+            "type": "topic",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "messaging_exchange",
+            "vhost": "/myvhost",
+            "destination": "logall_queue",
+            "destination_type": "queue",
+            "routing_key": "requests_key",
+            "arguments": {}
+        },
+        {
+            "source": "messaging_exchange",
+            "vhost": "/myvhost",
+            "destination": "requests_queue",
+            "destination_type": "queue",
+            "routing_key": "requests_key",
+            "arguments": {}
+        },
+        {
+            "source": "messaging_exchange",
+            "vhost": "/myvhost",
+            "destination": "logall_queue",
+            "destination_type": "queue",
+            "routing_key": "tasks_key",
+            "arguments": {}
+        },
+        {
+            "source": "messaging_exchange",
+            "vhost": "/myvhost",
+            "destination": "tasks_queue",
+            "destination_type": "queue",
+            "routing_key": "tasks_key",
+            "arguments": {}
+        }
+    ]
+}

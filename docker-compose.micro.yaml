@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+    M1:
+        image: node:18.17.1-alpine3.18
+        ports:
+            - 9091:9091
+        user: "node"
+        working_dir: /home/node/app
+        environment:
+            - NODE_ENV=production
+            - SERVICE_NAME=M1
+            - SERVICE_PORT=9091
+            - RABBIT_USER=requester
+            - RABBIT_PASSWORD=password
+            - RABBIT_PORT=5672
+            - RABBIT_HOSTNAME=rabbit
+            - RABBIT_VHOST=/myvhost
+            - RABBIT_EXCHANGE=messaging_exchange
+            - RABBIT_REQKEY=requests_key
+            - RABBIT_READQUEUE=tasks_queue
+        volumes:
+            - ./micro1/:/home/node/app
+            - ./node_modules/:/home/node/app/node_modules/
+        command:
+            - "node"
+            - "--experimental-specifier-resolution=node"
+            - "./dist/index.js"
+networks:
+    default:
+        driver: bridge
