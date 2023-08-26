@@ -2,7 +2,7 @@
 > this repo contains multi-worspace npm (+vscode) projects  
 > ###  __*requires*__ 
 > * docker (docker desktop)  
-> * npm v18
+> * node v18
 > * powershell 7 or bash (wsl)
 ---
 
